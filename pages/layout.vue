@@ -36,7 +36,7 @@ export default {};
 <style>
 .container {
   width: 600px;
-  height: 200px;
+  height: 300px;
   margin-top: 10px;
   float: left;
 }
