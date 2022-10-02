@@ -22,6 +22,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/bootstrap.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -36,7 +37,10 @@ export default {
     // https://go.nuxtjs.dev/bootstrap
     'bootstrap-vue/nuxt',
   ],
-
+  bootstrapVue: {
+    bootstrapCSS:false,
+    icons: true,
+  },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }
