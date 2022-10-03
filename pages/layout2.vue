@@ -49,6 +49,13 @@
             <p>Message</p>
             <textarea class="form-input"></textarea>
           </div>
+
+          <div>
+            <input id="sub" type="checkbox">
+            <label for="sub">Subscribe</label>
+            <button class="yello-button">SEND</button>
+          </div>
+
         </form>
       </div>
     </div>
@@ -147,5 +154,13 @@ textarea {
 .w-100 {
   width: 100%;
   padding: 10px;
+}
+.yello-button {
+  padding: 10px;
+  display: block;
+  margin-left: auto;
+  background: yellowgreen;
+  border: none;
+  border-radius: 5px;
 }
 </style>
