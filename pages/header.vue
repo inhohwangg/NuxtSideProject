@@ -30,6 +30,18 @@
     </div>
     <div>
       <input v-model="title" type="text" placeholder="postTest-title" />
+      <button
+        @click="mainPageRequire"
+        style="
+          padding: 5px;
+          border: none;
+          border-radius: 5px;
+          background: yellowgreen;
+          cursor: pointer;
+        "
+      >
+        전송
+      </button>
       <input v-model="content" type="text" placeholder="postTest-content" />
       <button
         @click="postWrite"
@@ -55,12 +67,20 @@ export default {
     return {
       title:'',
       content:'',
+      postRead:'',
+      client_id: "a4f7f774f4ffb1fe8d4a59f3759ea520",
+      redirect_uri: "http://localhost:3000/api/user/kakao/callback"
+    }
+  },
+  computed: {
+    kakaoLoginLink() {
+      return `https://kauth.kakao.com/oauth/authorize?client_id=${this.client_id}&redirect_uri=${this.redirect_uri}&response_type=code`;
     }
   },
   methods: {
     kakaotest() {
       const API_KEY = process.env.KAKAO_AUTH_KEY;
-      const data = 'a4f7f774f4ffb1fe8d4a59f3759ea520'
+      const data = "4f7f774f4ffb1fe8d4a59f3759ea520"
       const REDIRECT_URI = "http://localhost:3000/oauth";
       const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
       axios
@@ -94,6 +114,20 @@ export default {
           console.log(error, "게시글 작성 실패!");
         });
     },
+    //전체 게시글 가져오기
+    mainPageRequire() {
+      const host = 'http://13.125.96.150:3000/api/post/main'
+      let token = localStorage.getItem("access_token")
+      axios.get(host)
+      .then((res)=> {
+        console.log(res.data.post)
+        console.log('게시글 조회성공')
+      })
+      .catch((error)=> {
+        console.log(error)
+        console.log('게시글 조회 실패...!')
+      })
+    }
   },
 };
 </script>
