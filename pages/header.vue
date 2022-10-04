@@ -8,40 +8,11 @@
           style="margin-right: 15px; cursor: pointer"
         ></b-icon>
         <button class="btn-style">
-          <strong style="font-size: 16px">로그인</strong>
+          <strong style="font-size: 16px"><nuxt-link to="/pages/Login.vue">로그인</nuxt-link></strong>
         </button>
       </div>
     </div>
-    <div class="container3"></div>
     <div>
-      <input type="text" placeholder="kakaotest" />
-      <button
-        @click="kakaotest"
-        style="
-          padding: 5px;
-          border: none;
-          border-radius: 5px;
-          background: yellowgreen;
-          cursor: pointer;
-        "
-      >
-        전송
-      </button>
-    </div>
-    <div>
-      <input v-model="title" type="text" placeholder="postTest-title" />
-      <button
-        @click="mainPageRequire"
-        style="
-          padding: 5px;
-          border: none;
-          border-radius: 5px;
-          background: yellowgreen;
-          cursor: pointer;
-        "
-      >
-        전송
-      </button>
       <input v-model="content" type="text" placeholder="postTest-content" />
       <button
         @click="postWrite"
@@ -56,6 +27,9 @@
         전송
       </button>
     </div>
+    <div v-for="a in postRead" :key="a" class="container3">
+      {{a}}
+    </div>
   </div>
 </template>
 
@@ -65,34 +39,23 @@ import axios from "axios";
 export default {
   data() {
     return {
-      title:'',
-      content:'',
-      postRead:'',
+      title: "",
+      content: "",
+      postRead: "",
       client_id: "a4f7f774f4ffb1fe8d4a59f3759ea520",
-      redirect_uri: "http://localhost:3000/api/user/kakao/callback"
-    }
+      redirect_uri: "http://localhost:3000/api/user/kakao/callback",
+    };
+  },
+  mounted() {
+    this.mainPageRequire();
+    console.info(this.postRead)
   },
   computed: {
     kakaoLoginLink() {
       return `https://kauth.kakao.com/oauth/authorize?client_id=${this.client_id}&redirect_uri=${this.redirect_uri}&response_type=code`;
-    }
+    },
   },
   methods: {
-    kakaotest() {
-      const API_KEY = process.env.KAKAO_AUTH_KEY;
-      const data = "4f7f774f4ffb1fe8d4a59f3759ea520"
-      const REDIRECT_URI = "http://localhost:3000/oauth";
-      const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
-      axios
-        .get(KAKAO_AUTH_URI, {headers: data})
-        .then((res) => {
-          console.log(res);
-          console.log("뭐라고나오려나....");
-        })
-        .catch((error) => {
-          console.log(error, "실패!!");
-        });
-    },
     postWrite() {
       const host = "http://13.125.96.150:3000/api/post/write";
       let token = localStorage.getItem("access_token");
@@ -116,18 +79,20 @@ export default {
     },
     //전체 게시글 가져오기
     mainPageRequire() {
-      const host = 'http://13.125.96.150:3000/api/post/main'
-      let token = localStorage.getItem("access_token")
-      axios.get(host)
-      .then((res)=> {
-        console.log(res.data.post)
-        console.log('게시글 조회성공')
-      })
-      .catch((error)=> {
-        console.log(error)
-        console.log('게시글 조회 실패...!')
-      })
-    }
+      const host = "http://13.125.96.150:3000/api/post/main";
+      let token = localStorage.getItem("access_token");
+      axios
+        .get(host)
+        .then((res) => {
+          console.log(res.data.post);
+          this.postRead = res.data.post
+          console.log("게시글 조회성공");
+        })
+        .catch((error) => {
+          console.log(error);
+          console.log("게시글 조회 실패...!");
+        });
+    },
   },
 };
 </script>
@@ -139,6 +104,7 @@ export default {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
 }
 .text-style {
   font-size: 28px;
@@ -161,8 +127,13 @@ export default {
   cursor: pointer;
 }
 .container3 {
-  width: 90%;
-  margin-top: 30px;
+  display: inline-block;
+  width: 200px;
+  height: 100px;
+  margin-top: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   background-color: green;
 }
 </style>

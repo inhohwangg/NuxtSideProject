@@ -12,7 +12,7 @@
     name: "App",
     data: () => ({
       client_id: "a4f7f774f4ffb1fe8d4a59f3759ea520",
-      redirect_uri: "http://localhost:3000/api/user/kakao/callback",
+      redirect_uri: "http://13.125.96.150:3000/api/user/kakao/callback",
     }),
     computed: {
       kakaoLoginLink() {
