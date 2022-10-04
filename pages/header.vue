@@ -8,7 +8,7 @@
           style="margin-right: 15px; cursor: pointer"
         ></b-icon>
         <button class="btn-style">
-          <strong style="font-size: 16px"><nuxt-link to="/pages/Login.vue">로그인</nuxt-link></strong>
+          <strong style="font-size: 16px"><nuxt-link to="/login">로그인</nuxt-link></strong>
         </button>
       </div>
     </div>
@@ -28,15 +28,19 @@
       </button>
     </div>
     <div v-for="a in postRead" :key="a" class="container3">
-      {{a}}
+      {{a.title}} {{a.content}} {{a.writer}} {{dayjs(a.createdAt).format('YYYY-MM-DD')}}
     </div>
   </div>
 </template>
 
 <script>
 import { IconsPlugin } from "bootstrap-vue";
+import dayjs from "dayjs";
 import axios from "axios";
 export default {
+  components:{
+    dayjs
+  },
   data() {
     return {
       title: "",
@@ -70,6 +74,7 @@ export default {
         .then((res) => {
           let token = localStorage.getItem("access_token");
           localStorage.setItem("access_token", token);
+          window.location.reload()
           console.log(res.data);
           console.log("게시글 작성 성공");
         })
@@ -134,6 +139,7 @@ export default {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: normal;
   background-color: green;
 }
 </style>

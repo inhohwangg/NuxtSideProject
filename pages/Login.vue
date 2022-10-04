@@ -62,7 +62,7 @@
             console.log(res.data);
             console.log("로그인 성공");
             // 페이지 전환해주는 부분
-            this.$router.push("/userdata");
+            this.$router.push("/header");
           })
           .catch((error) => {
             console.log(error, "로그인 실패");
