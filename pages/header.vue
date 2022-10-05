@@ -3,13 +3,18 @@
     <div class="container">
       <strong class="text-style" style="cursor: pointer">velog</strong>
       <div class="container2">
-        <b-icon
-          icon="search"
-          style="margin-right: 15px; cursor: pointer"
-        ></b-icon>
-        <button class="btn-style">
-          <strong style="font-size: 16px"><nuxt-link to="/login">로그인</nuxt-link></strong>
-        </button>
+        <div class="btn-box">
+          <b-icon
+            icon="search"
+            style="margin-right: 15px; cursor: pointer"
+          ></b-icon>
+          <button class="btn-write-style">
+            <strong style="font-size: 16px; background: white"><nuxt-link to="/write">새글작성</nuxt-link></strong>
+          </button>
+          <button class="btn-style">
+            <strong style="font-size: 16px"><nuxt-link to="/login">로그인</nuxt-link></strong>
+          </button>
+        </div>
       </div>
     </div>
     <div>
@@ -28,13 +33,14 @@
       </button>
     </div>
     <div v-for="a in postRead" :key="a" class="container3">
-      {{a.title}} {{a.content}} {{a.writer}} {{dayjs(a.createdAt).format('YYYY-MM-DD')}}
+      {{a.title}} {{a.content}} {{a.writer}} {{a.createdAt | formatDate}}
     </div>
   </div>
 </template>
 
 <script>
 import { IconsPlugin } from "bootstrap-vue";
+import moment from 'moment'
 import dayjs from "dayjs";
 import axios from "axios";
 export default {
@@ -125,9 +131,6 @@ export default {
   padding: 5px;
   color: white;
   background: black;
-  align-items: center;
-  margin-left: auto;
-  margin-right: auto;
   border-radius: 19px;
   cursor: pointer;
 }
@@ -141,5 +144,16 @@ export default {
   text-overflow: ellipsis;
   white-space: normal;
   background-color: green;
+}
+.btn-write-style {
+  width: 80px;
+  padding: 5px;
+  border-radius: 19px;
+  cursor: pointer;
+}
+.btn-box {
+  width: 300px;
+  height: 300px;
+  margin-right: auto;
 }
 </style>

@@ -1,47 +1,46 @@
 <template>
   <div>
-    <div class="test">Velog 짝퉁</div>
-    <div class="mb-3" style="margin-top: 50px; margin-left: 330px">
-      <b-button v-b-toggle.my-collapse>게시글 작성페이지</b-button>
-      <b-button v-b-toggle.my-sidebar>Toggle Sidebar</b-button>
-    </div>
-    <div class="mb-3">
-      <b-collapse id="my-collapse">
-        <b-card title="Collapsible card"> Hello world! </b-card>
-      </b-collapse>
-    </div>
-    <div>
-      <b-sidebar id="my-sidebar" title="메뉴 사이드바" shadow>
-        <div class="mt-3 px-3 py-2 col-5">
-          <b-button class="m-1" variant="danger">메인</b-button>
-          <b-button class="m-1" variant="success">글 목록</b-button>
-          <b-button class="m-1" variant="outline-primary">글 작성</b-button>
-        </div>
-      </b-sidebar>
-    </div>
+    <h1>게시글 글쓰기</h1>
+    <p>제목 : <input v-model="title" /></p>
+    <p>내용 : <input v-model="content" /></p>
+    <button @click="postWrite">작성 완료</button>
   </div>
 </template>
-  
-  <script>
+
+<script>
+import axios from 'axios'
 export default {
   data() {
     return {
-      test: true,
-    };
+      title:'',
+      content:'',
+    }
   },
+  methods:{
+    postWrite() {
+      const host = "http://13.125.96.150:3000/api/post/write";
+      let token = localStorage.getItem("access_token");
+      let data = {
+        title: this.title,
+        content: this.content,
+      };
+      axios
+        .post(host, data, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((res) => {
+          let token = localStorage.getItem("access_token");
+          localStorage.setItem("access_token", token);
+          console.log(res.data);
+          console.log("게시글 작성 성공");
+        })
+        .catch((error) => {
+          console.log(error, "게시글 작성 실패!");
+        });
+    },
+  }
 };
 </script>
-<style scoped>
-.test {
-    width: 1260px;
-    height: 100px;
-    background-color: green;
-    border-radius: 10px;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    margin: auto;
-    font-size: 30px;
-    font-family: sans-serif;
-}
+
+<style>
 </style>
