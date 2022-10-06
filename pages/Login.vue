@@ -20,6 +20,7 @@
           ><input type="submit" value="회원가입" class="submit-btn"
         /></nuxt-link>
         <div class="links">
+          <kakao />
           <a href="#">비밀번호를 잃어버리셨나요?</a>
         </div>
       </form>
@@ -28,7 +29,11 @@
   
   <script>
   import axios from "axios";
+  import kakao from "../components/kakao.vue"
   export default {
+    components:{
+      kakao
+    },
     data() {
       return {
         userId: "",
