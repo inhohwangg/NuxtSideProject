@@ -1,7 +1,7 @@
 <template>
   <div class="finish-wrap">
     <div class="container">
-      <strong class="text-style" style="cursor: pointer">velog</strong>
+      <strong class="text-style" style="cursor: pointer" @click="velogClick">velog</strong>
       <div class="container2">
         <div class="btn-box">
           <b-icon
@@ -55,6 +55,9 @@ export default {
     },
   },
   methods: {
+    velogClick() {
+      window.location.reload();
+    },
     // 게시글 작성하기
     postWrite() {
       const host = "http://13.125.96.150:3000/api/post/write";
