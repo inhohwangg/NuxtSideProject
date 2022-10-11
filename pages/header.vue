@@ -1,7 +1,9 @@
 <template>
   <div class="finish-wrap">
     <div class="container">
-      <strong class="text-style" style="cursor: pointer" @click="velogClick">velog</strong>
+      <strong class="text-style" style="cursor: pointer" @click="velogClick"
+        >velog</strong
+      >
       <div class="container2">
         <div class="btn-box">
           <b-icon
@@ -9,7 +11,7 @@
             style="margin-right: 15px; cursor: pointer"
           ></b-icon>
           <button class="btn-write-style">
-            <strong style="font-size: 16px; background: white"
+            <strong style="font-size: 16px"
               ><nuxt-link to="/write">새 글 작성</nuxt-link></strong
             >
           </button>
@@ -76,7 +78,6 @@ export default {
           window.location.reload();
           console.log(res.data);
           console.log("게시글 작성 성공");
-          
         })
         .catch((error) => {
           console.log(error, "게시글 작성 실패!");
@@ -107,7 +108,7 @@ div {
   box-sizing: border-box;
 }
 .finish-wrap {
-  background-color : #eee;
+  background-color: #eee;
   height: 100%;
   position: fixed;
   width: 100%;
@@ -136,6 +137,7 @@ div {
   background: black;
   border-radius: 19px;
   cursor: pointer;
+  text-decoration: none;
 }
 .container3 {
   display: flex;
@@ -152,8 +154,8 @@ div {
   border-radius: 5px;
 }
 .container3:hover {
-    box-shadow: 0.1px 0.1px 0.1px 1px #eee;
-    transform: translateY( -7px )
+  box-shadow: 0.1px 0.1px 0.1px 1px #eee;
+  transform: translateY(-7px);
 }
 .btn-write-style {
   width: 110px;
@@ -167,5 +169,4 @@ div {
   margin-right: auto;
   margin-left: -40px;
 }
-
 </style>
