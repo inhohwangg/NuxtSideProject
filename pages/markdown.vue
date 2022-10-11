@@ -21,6 +21,15 @@ export default {
   mounted() {
     this.getMarkdown();
   },
+  methods: {
+    getMarkdown() {
+      const url =
+        "https://raw.githubusercontent.com/sungjaeyoon/show-md/main/README.md";
+      axios.get(url).then((res) => {
+        this.mdText = res.data;
+      });
+    },
+  },
   computed: {
     changeMarkdown() {
       marked.setOptions({
@@ -34,20 +43,28 @@ export default {
         smartLists: true,
         smartypants: false,
       });
-      return marked(this.mdText);
-    },
-  },
-  methods: {
-    getMarkdown() {
-      const url =
-        "https://raw.githubusercontent.com/sungjaeyoon/show-md/main/README.md";
-      axios.get(url).then((res) => {
-        this.mdText = res.data;
-      });
+      let changedText = marked(this.mdText);
+      changedText = changedText.replaceAll("&lt;", "<");
+      changedText = changedText.replaceAll("&gt;", ">");
+      changedText = changedText.replaceAll("&quot;", '"');
+      return changedText;
     },
   },
 };
 </script>
 
-<style>
+<style scoped>
+.test {
+  background-color: white;
+  color: black;
+}
+::v-deep .red-color {
+  color: red;
+}
+::v-deep .blue-color {
+  color: blue;
+}
+::v-deep .yellow-color {
+  color: yellow;
+}
 </style>
