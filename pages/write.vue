@@ -6,14 +6,24 @@
         class="bkWYJa"
         style="height: 66px"
       ></textarea>
+      <div class="getkEn"></div>
+      <input
+        placeholder="태그를 입력하세요"
+        tabindex="2"
+        class="chigdE"
+        value
+      />
     </div>
     <tui />
-    <button class="out-button">나가기</button>
+    <button class="out-button">
+      <b-icon icon="arrow-left" style="margin-right: 8px"></b-icon>나가기
+    </button>
     <button class="post-button" @click="postWrite">출간하기</button>
   </div>
 </template>
 
 <script>
+import { IconsPlugin } from "bootstrap-vue";
 import axios from "axios";
 import Tui from "../components/tui.vue";
 export default {
@@ -70,9 +80,9 @@ textarea {
   outline: none;
   border: none;
   font-weight: bold;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  margin-left: 10px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  margin-left: 30px;
 }
 .out-button {
   height: 2.5rem;
@@ -84,6 +94,8 @@ textarea {
   border: none;
   outline: none;
   background-color: #fff;
+  font-size: 18px;
+  font-family: inherit;
 }
 .post-button {
   padding: 0.5em 1em;
@@ -95,10 +107,32 @@ textarea {
   border: 1px solid #fff;
   cursor: pointer;
   text-transform: uppercase;
-  margin-left: 780px;
+  margin-left: 725px;
   margin-top: 10px;
   font-weight: bold;
   font-size: 18px;
   font-family: inherit;
+}
+.chigdE {
+  background: transparent;
+  display: inline-flex;
+  outline: none;
+  cursor: text;
+  font-size: 1.125rem;
+  line-height: 2rem;
+  margin-bottom: 0.75rem;
+  min-width: 8rem;
+  border: none;
+  margin-left: 30px;
+  font-family: inherit;
+}
+.getkEn {
+  background: rgb(73, 80, 87);
+  height: 6px;
+  width: 4rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 1px;
+  margin-left: 30px;
 }
 </style>
