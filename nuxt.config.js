@@ -28,6 +28,7 @@ export default {
     "~/plugins/bootstrap.js",
     "~/plugins/filter.js",
     { src: "~/plugins/tui-editor.js", ssr: false },
+    { src: "~/plugins/vue-js-modal", mode: "client" },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
