@@ -6,7 +6,7 @@
         <li>
           <a :href="kakaoLoginLink" alt="kakao login">
             <img
-              src="../assets/images/image.png"
+              src="~/assets/images/image.png"
               style="cursor: pointer; width: 60px"
               @click="kakaoLogin"
             />

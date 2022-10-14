@@ -12,20 +12,24 @@
           ></b-icon>
           <button class="btn-write-style">
             <strong style="font-size: 16px"
-              ><nuxt-link to="/write">새 글 작성</nuxt-link></strong
+              ><nuxt-link to="/post/write">새 글 작성</nuxt-link></strong
             >
           </button>
           <button class="btn-style">
             <strong style="font-size: 16px"
-              ><nuxt-link to="/login">로그인</nuxt-link></strong
+              ><nuxt-link to="/etc/login">로그인</nuxt-link></strong
             >
           </button>
         </div>
       </div>
     </div>
     <div v-for="a in postRead" :key="a" class="container3">
-      {{ a.title }} {{ a.content }} {{ a.writer }}
-      {{ a.createdAt | formatDate }}
+      <div>
+        <div>{{ a.title }}</div>
+        <div>{{ a.content }}</div>
+        <div>{{ a.writer }}</div>
+        <div>{{ a.createdAt | formatDate }}</div>
+      </div>
     </div>
   </div>
 </template>
@@ -78,6 +82,7 @@ export default {
           window.location.reload();
           console.log(res.data);
           console.log("게시글 작성 성공");
+          this.$router.push("/header");
         })
         .catch((error) => {
           console.log(error, "게시글 작성 실패!");

@@ -25,7 +25,7 @@
 <script>
 import { IconsPlugin } from "bootstrap-vue";
 import axios from "axios";
-import Tui from "../components/tui.vue";
+import Tui from "~/components/tui.vue";
 export default {
   data() {
     return {
