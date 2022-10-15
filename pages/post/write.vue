@@ -15,7 +15,7 @@
       />
     </div>
     <tui />
-    <button class="out-button">
+    <button class="out-button" @click="toFirstPage">
       <b-icon icon="arrow-left" style="margin-right: 8px"></b-icon>나가기
     </button>
     <button class="post-button" @click="postWrite">출간하기</button>
@@ -34,6 +34,9 @@ export default {
     };
   },
   methods: {
+    toFirstPage() {
+      this.$router.push("/header");
+    },
     toastTest1() {
       this.$toast.success("Hello Info");
     },
@@ -53,6 +56,7 @@ export default {
           localStorage.setItem("access_token", token);
           console.log(res.data);
           console.log("게시글 작성 성공");
+          this.$router.push("/header");
         })
         .catch((error) => {
           console.log(error, "게시글 작성 실패!");
@@ -134,5 +138,11 @@ textarea {
   margin-bottom: 1rem;
   border-radius: 1px;
   margin-left: 30px;
+}
+.out-button:hover {
+  background-color: #e9ecef;
+}
+.post-button:hover {
+  background-color: #20c997;
 }
 </style>

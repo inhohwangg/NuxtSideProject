@@ -6,10 +6,12 @@
       >
       <div class="container2">
         <div class="btn-box">
-          <b-icon
-            icon="search"
-            style="margin-right: 15px; cursor: pointer"
-          ></b-icon>
+          <div class="btn-search" @click="searchPageMove">
+            <b-icon
+              icon="search"
+              style="margin-right: 15px; cursor: pointer"
+            ></b-icon>
+          </div>
           <button class="btn-write-style">
             <strong style="font-size: 16px"
               ><nuxt-link to="/post/write">새 글 작성</nuxt-link></strong
@@ -31,7 +33,29 @@
               <div class="modal-mask">
                 <div class="modal-wrapper">
                   <div class="close close1" @click="closeModal"></div>
-                  <div class="modal-container1"></div>
+                  <div class="modal-container1">
+                    <div>
+                      <img
+                        src="~/assets/images/undraw_joyride_hnno.fae6b95e.svg"
+                        style="
+                          width: 150px;
+                          height: 150px;
+                          margin-top: 190px;
+                          margin-left: 35px;
+                        "
+                      />
+                    </div>
+                    <div
+                      style="
+                        font-size: 1.75rem;
+                        text-align: center;
+                        font-weight: 600;
+                        color: #495057;
+                      "
+                    >
+                      환영합니다!
+                    </div>
+                  </div>
                   <div class="modal-container2">
                     <div class="modal-header">
                       <div
@@ -88,7 +112,13 @@
                           font-weight: bold;
                         "
                       >
-                        소셜 계정으로 로그인
+                        카카오 계정으로 로그인
+                      </div>
+                      <div class="kakaoLogin">
+                        <img
+                          src="~/assets/images/image.png"
+                          style="width: 3rem; height: 3rem; margin-left: 220px"
+                        />
                       </div>
                     </div>
                     <div class="modal-footer"></div>
@@ -153,6 +183,9 @@ export default {
     },
     velogClick() {
       window.location.reload();
+    },
+    searchPageMove() {
+      this.$router.push("/etc/search");
     },
     // 게시글 작성하기
     postWrite() {
@@ -233,6 +266,9 @@ div {
   border-radius: 19px;
   cursor: pointer;
   text-decoration: none;
+}
+.btn-style:hover {
+  background: #343a40;
 }
 .container3 {
   display: flex;
@@ -377,7 +413,7 @@ div {
   width: 80%;
 }
 .submit-register {
-  margin-top: 20px;
+  margin-top: 10px;
   width: 80%;
 }
 
@@ -387,7 +423,7 @@ div {
   border: 0;
   outline: none;
   border-radius: 40px;
-  background: linear-gradient(to left, rgba(255, 77, 46), rgb(255, 155, 47));
+  background: #12b886;
   font-size: 1.2em;
   color: white;
   letter-spacing: 2px;
@@ -399,10 +435,38 @@ div {
   border: 0;
   outline: none;
   border-radius: 40px;
-  background: linear-gradient(to left, rgba(255, 77, 46), rgb(255, 155, 47));
+  background: #12b886;
   color: white;
   font-size: 1.2em;
   letter-spacing: 2px;
   cursor: pointer;
+}
+.kakaoLogin {
+  margin-top: 10px;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 1.5rem;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  outline: none;
+  transition: all 0.1225s ease-in 0s;
+  color: white;
+}
+.btn-write-style:hover {
+  background-color: black;
+}
+.btn-search {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  float: inherit;
+  padding: 12px;
+}
+.btn-search:hover {
+  background-color: rgba(0, 0, 0, 0.5);
 }
 </style>
