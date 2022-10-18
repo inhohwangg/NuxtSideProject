@@ -132,12 +132,63 @@
     </div>
     <div v-for="a in postRead" :key="a" class="container3">
       <div>
-        <div style="margin-left: 10px; margin-top: 10px">{{ a.title }}</div>
-        <div style="margin-left: 10px; margin-top: 10px">{{ a.content }}</div>
-        <div style="margin-left: 10px; margin-top: 10px">{{ a.writer }}</div>
-        <div style="margin-left: 10px; margin-top: 10px">
-          {{ a.createdAt | formatDate }}
-        </div>
+        <img
+          src="../assets/images/도로로.jpg"
+          style="width: 330px; height: 135px"
+        />
+      </div>
+      <div
+        style="
+          margin-left: 10px;
+          margin-top: 10px;
+          position: absolute;
+          margin-top: 150px;
+          float: left;
+          font-size: 16px;
+          font-weight: 700;
+        "
+      >
+        {{ a.title }}
+      </div>
+      <div
+        style="
+          margin-left: 10px;
+          margin-top: 10px;
+          position: absolute;
+          margin-top: 180px;
+          float: left;
+          font-size: 14px;
+        "
+      >
+        {{ a.content }}
+      </div>
+      <div
+        style="
+          margin-left: 10px;
+          margin-top: 10px;
+          font-size: 12px;
+          position: absolute;
+          margin-top: 260px;
+          float: left;
+          color: #868e96;
+        "
+      >
+        {{ a.createdAt | formDateMonth }}
+      </div>
+      <div
+        style="
+          position: absolute;
+          margin-top: 290px;
+          float: left;
+          width: 330px;
+          height: 40px;
+          padding: 13px;
+          border-top: 1px solid #eee;
+          font-size: 12px;
+          font-weight: 600;
+        "
+      >
+        by {{ a.writer }}
       </div>
     </div>
   </div>
@@ -283,9 +334,10 @@ div {
   white-space: normal;
   background: white;
   border-radius: 5px;
+  transition: all 0.3s cubic-bezier(0.42, 0, 0.58, 1);
 }
 .container3:hover {
-  box-shadow: 0.1px 0.1px 0.1px 1px #eee;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   transform: translateY(-7px);
 }
 .btn-write-style {
