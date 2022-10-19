@@ -88,6 +88,7 @@
                           id="password"
                           v-model="password"
                           placeholder="비밀번호를 입력해주세요."
+                          @keyup.enter="submitForm"
                         />
                       </div>
                       <div class="submit">
@@ -237,6 +238,46 @@ export default {
     },
     searchPageMove() {
       this.$router.push("/etc/search");
+    },
+    //로그인 기능
+    submitForm() {
+      let url = "http://13.125.96.150:3000/api/user/login";
+      let url2 = "http://13.125.96.150:3000/api/user/islogin";
+      let token = localStorage.getItem("access_token");
+      let data = {
+        userId: this.userId,
+        password: this.password,
+      };
+      axios
+        .post(url, data)
+        .then((res) => {
+          console.log(res);
+          let token = res.data.token;
+          localStorage.setItem("access_token", token);
+          console.log(res.data);
+          console.log("로그인 성공");
+          // 페이지 전환해주는 부분
+          this.$router.push("/header");
+          this.closeModal();
+        })
+        .catch((error) => {
+          console.log(error, "로그인 실패");
+        });
+
+      axios
+        .get(url2, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          console.info(res);
+          console.info("로그인 체크 성공");
+        })
+        .catch((error) => {
+          console.info(error);
+          console.info("로그인 체크 실패");
+        });
     },
     // 게시글 작성하기
     postWrite() {
