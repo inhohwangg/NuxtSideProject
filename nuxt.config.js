@@ -36,6 +36,7 @@ export default {
     "~/plugins/filter.js",
     { src: "~/plugins/tui-editor.js", mode: "client" },
     { src: "~/plugins/vue-js-modal", mode: "client" },
+    { src: "~plugins/infinite-loading", mode: "client" },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
