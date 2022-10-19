@@ -237,7 +237,7 @@ export default {
       window.location.reload();
     },
     searchPageMove() {
-      this.$router.push("/etc/search");
+      this.$router.push("/etc/search2");
     },
     //로그인 기능
     submitForm() {
