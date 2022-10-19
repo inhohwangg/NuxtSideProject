@@ -34,7 +34,7 @@ export default {
   plugins: [
     "~/plugins/bootstrap.js",
     "~/plugins/filter.js",
-    { src: "~/plugins/tui-editor.js", ssr: false },
+    { src: "~/plugins/tui-editor.js", mode: "client" },
     { src: "~/plugins/vue-js-modal", mode: "client" },
   ],
 

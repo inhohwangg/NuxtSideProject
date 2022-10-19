@@ -1,7 +1,8 @@
 <template>
   <div>
-    <editor :initialValue="text" ref="editor" align="left"> </editor>
-    <viewer v-if="toggle" :initialValue="text"></viewer>
+    <editor v-model="content" :initialValue="content" ref="editor" align="left">
+    </editor>
+    <viewer v-if="toggle" :initialValue="content"></viewer>
   </div>
 </template>
 
@@ -11,6 +12,7 @@ export default {
     return {
       text: "# 이렇게 나옵니다",
       toggle: false,
+      content: "",
     };
   },
 };

@@ -2,6 +2,7 @@
   <div>
     <div>
       <textarea
+        v-model="title"
         placeholder="제목을 입력하세요"
         class="bkWYJa"
         style="height: 66px"
@@ -14,7 +15,7 @@
         value
       />
     </div>
-    <tui />
+    <tui :v-bind="content" />
     <button class="out-button" @click="toFirstPage">
       <b-icon icon="arrow-left" style="margin-right: 8px"></b-icon>나가기
     </button>
@@ -27,10 +28,15 @@ import { IconsPlugin } from "bootstrap-vue";
 import axios from "axios";
 import Tui from "~/components/tui.vue";
 export default {
+  components: {
+    Tui,
+  },
   data() {
     return {
+      text: "# 이렇게 나옵니다",
       title: "",
       content: "",
+      toggle: false,
     };
   },
   methods: {
