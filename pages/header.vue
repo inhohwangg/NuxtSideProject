@@ -192,6 +192,11 @@
         by {{ a.writer }}
       </div>
     </div>
+    <infinite-loading
+      v-if="items.length"
+      spinner="bubbles"
+      @infinite="infiniteScroll"
+    ></infinite-loading>
   </div>
 </template>
 
@@ -201,10 +206,11 @@ import moment from "moment";
 import dayjs from "dayjs";
 import axios from "axios";
 import Modal from "~/components/Modal.vue";
+import Tui from "~/components/tui.vue";
 export default {
   components: {
-    dayjs,
     Modal,
+    Tui,
   },
   data() {
     return {
@@ -216,17 +222,48 @@ export default {
       client_id: process.env.KAKAO_AUTH_KEY,
       redirect_uri: process.env.REDIRECT_URI,
       showModal: false,
+      items: [],
+      page: 1,
     };
   },
   mounted() {
     this.mainPageRequire();
   },
+  created() {
+    this.getPhotos();
+  },
   computed: {
     kakaoLoginLink() {
       return `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.VUE_APP_KAKAO_AUTH_KEY}&redirect_uri=${this.redirect_uri}&response_type=code`;
     },
+    url() {
+      return "https://jsonplaceholder.typicode.com/photos?_page=" + this.page;
+    },
   },
   methods: {
+    async getPhotos() {
+      const resp = await axios.get(this.url);
+      this.items = resp.data;
+    },
+    infiniteScroll($state) {
+      setTimeout(() => {
+        this.page++; // next page
+        axios
+          .get(this.url)
+          .then((resp) => {
+            if (resp.data.length > 1) {
+              // check if any left
+              resp.data.forEach((item) => this.items.push(item)); // push it into the items array so we can display the data
+              $state.loaded();
+            } else {
+              $state.complete();
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }, 500);
+    },
     modalShow() {
       this.showModal = true;
     },
@@ -328,10 +365,11 @@ div {
   box-sizing: border-box;
 }
 .finish-wrap {
-  background-color: #eee;
+  background-color: #fff;
   height: 100%;
   position: fixed;
   width: 100%;
+  overflow: auto;
 }
 .container {
   width: 90%;
@@ -370,7 +408,7 @@ div {
   margin-left: 50px;
   margin-top: 60px;
   white-space: nowrap;
-  overflow: hidden;
+
   text-overflow: ellipsis;
   white-space: normal;
   background: white;

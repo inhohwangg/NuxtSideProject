@@ -34,6 +34,7 @@ export default {
   plugins: [
     "~/plugins/bootstrap.js",
     "~/plugins/filter.js",
+    "~/plugins/fontawesome.js",
     { src: "~/plugins/tui-editor.js", mode: "client" },
     { src: "~/plugins/vue-js-modal", mode: "client" },
     { src: "~plugins/infinite-loading", mode: "client" },
@@ -43,7 +44,7 @@ export default {
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: ["@nuxtjs/dotenv"],
+  buildModules: ["@nuxtjs/dotenv", "@nuxtjs/vuetify", ["@nuxtjs/vuetify"]],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [

@@ -15,6 +15,11 @@ export default {
       content: "",
     };
   },
+  computed: {
+    start() {
+      console.info(this.content);
+    },
+  },
 };
 </script>
 

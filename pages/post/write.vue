@@ -15,7 +15,7 @@
         value
       />
     </div>
-    <tui :v-bind="content" />
+    <tui v-model="content" />
     <button class="out-button" @click="toFirstPage">
       <b-icon icon="arrow-left" style="margin-right: 8px"></b-icon>나가기
     </button>
