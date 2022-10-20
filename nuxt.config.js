@@ -44,7 +44,12 @@ export default {
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: ["@nuxtjs/dotenv", "@nuxtjs/vuetify", ["@nuxtjs/vuetify"]],
+  buildModules: [
+    "@nuxtjs/dotenv",
+    "@nuxtjs/google-fonts",
+    "@nuxtjs/vuetify",
+    ["@nuxtjs/vuetify"],
+  ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -59,6 +64,27 @@ export default {
   bootstrapVue: {
     bootstrapCSS: false,
     icons: true,
+  },
+  googleFonts: {
+    families: {
+      //a simple name
+      Roboto: true,
+      //a name with spaces
+      "Josefin+Sans": true,
+
+      //specific font weights
+      Lato: [100, 300],
+
+      //advanced
+      Raleway: {
+        //weights
+
+        wght: [100, 400],
+
+        // italic
+        ital: [100],
+      },
+    },
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
