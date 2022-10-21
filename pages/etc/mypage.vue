@@ -52,12 +52,76 @@
           <ul>
             <li>
               <span class="text">Hangeul</span>
-              <div class="percent"></div>
+              <span class="percent">
+                <div style="width: 90%"></div>
+              </span>
             </li>
           </ul>
         </div>
       </div>
-      <div class="right_Side"></div>
+      <div class="right_Side">
+        <div class="about">
+          <h2 class="title2">Profile</h2>
+          <p>자기소개글....</p>
+        </div>
+        <div class="about">
+          <h2 class="title2">Experience</h2>
+          <div class="box">
+            <div class="year_company">
+              <h5>2022 - Present</h5>
+              <h5>Company Name</h5>
+            </div>
+            <div class="text">
+              <h4>Developer Resercher</h4>
+              <p>저는 현재 그렉터에 재직중입니다.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="about skills">
+          <h2 class="title2">Professional Skills</h2>
+          <div class="box">
+            <h4>JavaScript</h4>
+            <div class="percent">
+              <div style="width: 60%"></div>
+            </div>
+          </div>
+          <div class="box">
+            <h4>Node.js</h4>
+            <div class="percent">
+              <div style="width: 45%"></div>
+            </div>
+          </div>
+          <div class="box">
+            <h4>Vue</h4>
+            <div class="percent">
+              <div style="width: 40%"></div>
+            </div>
+          </div>
+          <div class="box">
+            <h4>Nuxt</h4>
+            <div class="percent">
+              <div style="width: 40%"></div>
+            </div>
+          </div>
+          <div class="box">
+            <h4>Docker</h4>
+            <div class="percent">
+              <div style="width: 35%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about interest">
+          <h2 class="title2">Interest</h2>
+          <ul>
+            <li><i class="fa fa-solid fa-music"></i> Singing</li>
+            <li><i class="fa fa-solid fa-dumbbell"></i> Working</li>
+            <li><i class="fa fa-solid fa-book"></i> Reading</li>
+            <li><i class="fa fa-solid fa-person-running"></i> Running</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </body>
 </template>
@@ -180,7 +244,7 @@ body {
 
 .contactInfo-education h4 {
   color: #fff;
-  font-weight: 500;
+  font-weight: 300;
 }
 .contactInfo-language .percent {
   position: relative;
@@ -189,6 +253,114 @@ body {
   background: #081921;
   display: block;
   margin-top: 5px;
+}
+
+.contactInfo-language .percent div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: #03a9f4;
+}
+
+.about {
+  margin-bottom: 50px;
+}
+.about:last-child {
+  margin-bottom: 0;
+}
+.title2 {
+  color: #003147;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+p {
+  color: #333;
+}
+.about .box {
+  display: flex;
+  flex-direction: row;
+  margin: 20px 0;
+}
+.about .box .year_company {
+  min-width: 150px;
+}
+.about .box .year_company h5 {
+  text-transform: uppercase;
+  color: #848c90;
+  font-weight: 600;
+}
+.about .box .text h4 {
+  text-transform: uppercase;
+  color: #2a7da2;
+  font-size: 16px;
+}
+.skills .box {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  justify-content: center;
+  align-items: center;
+}
+.skills .box h4 {
+  text-transform: uppercase;
+  color: #848c99;
+  font-weight: 500;
+}
+.skills .box .percent {
+  position: relative;
+  width: 100%;
+  height: 10px;
+  background: #f0f0f0;
+}
+.skills .box .percent div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: #03a9f4;
+}
+.interest ul {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.interest ul li {
+  list-style: none;
+  color: #333;
+  font-weight: 500;
+  margin: 10px 0;
+}
+.interest ul li .fa {
+  color: #03a9f4;
+  font-size: 18px;
+  width: 20px;
+}
+
+@media (max-width: 1000px) {
+  .container {
+    margin: 10px;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .interest ul {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .about .box {
+    flex-direction: column;
+  }
+  .about .box .year_company {
+    margin-bottom: 5px;
+  }
+  .interest ul {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .skills .box {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 </style>
 
