@@ -41,7 +41,7 @@
             </li>
             <li>
               <h5>2021-09 ~ 2022-12</h5>
-              <h4>항해99</h4>
+              <h4>Hanghae99</h4>
               <h4>Boot Camp Name</h4>
             </li>
           </ul>
